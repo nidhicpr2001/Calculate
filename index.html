@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <meta name="description" content="Calculator">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        
+     *{box-sizing: border-box;margin: 0;}
+     html{font-size: 15px;}
+     body{font-size: 16px;}
+   
+    .container{max-width: 1200px;margin: auto;  padding: 0 1rem; margin-top: 10px;   }
+    .box{max-width: 360px;margin: auto;background: rgb(15, 15, 15);padding:30px 15px 15px 15px;border-radius: 20px; box-shadow: 0 0px 25px rgba(97, 7, 150, 0.9);}
+    .row{display: grid;grid-template-columns: repeat(12,1fr);gap: 2rem;}
+    .col-1{grid-column:span 1;}
+.col-2{grid-column:span 2;}
+.col-3{grid-column:span 3;}
+.col-4{grid-column:span 4;}
+.col-5{grid-column:span 5;}
+.col-6{grid-column:span 6;}
+.col-7{grid-column:span 7;}
+.col-8{grid-column:span 8;}
+.col-9{grid-column:span 9;}
+.col-10{grid-column:span 10;}
+.col-11{grid-column:span 11;}
+.col-12{grid-column:span 12;}
+
+
+h1{text-align: right;padding:30px 10px;height: 27px;color: #fff;}
+button{border: 2px solid rgb(121, 117, 117);display: grid;width: 60px;height: 60px;place-items: center;border-radius: 50%;font-size: 20px;padding: 6px;}
+.bg{background: rgb(241, 91, 36);}
+
+@media screen and (max-width:480px) {
+    html{ font-size: 12px;}
+    .box{min-height: 100vh;display: flex;justify-content: center;}
+        .row{    position: absolute;
+            bottom: 37px;gap: 1rem;}
+}
+/* .wrap-2{background:rgba(91, 91, 116, 0.6);min-height: 100vh;} */
+
+    </style>
+</head>
+<body>
+   <div class="wrap-2">
+    <div class="container">
+        <div class="box">
+     <div class="row">
+       
+        <div class="col-12 col-m-12 col-p-12"> <h1></h1></div>
+        <div class="col-3"><button>AC</button></div>
+        <div class="col-3"><button>+/-</button></div>
+        <div class="col-3"><button>%</button></div>
+        <div class="col-3"><button class="bg">/</button></div>
+        <div class="col-3"><button>7</button></div>
+        <div class="col-3"><button>8</button></div>
+        <div class="col-3"><button>9</button></div>
+        <div class="col-3"><button class="bg">X</button></div>
+        <div class="col-3"><button>4</button></div>
+        <div class="col-3"><button>5</button></div>
+        <div class="col-3"><button>6</button></div>
+        <div class="col-3"><button class="bg">-</button></div>
+        <div class="col-3"><button>1</button></div>
+        <div class="col-3"><button>2</button></div>
+        <div class="col-3"><button>3</button></div>
+        <div class="col-3"><button class="bg">+</button></div>
+        <div class="col-3"><button>0</button></div>
+        <div class="col-3"><button>.</button></div>
+        <div class="col-3"><button><i class="fa-solid fa-circle-xmark"></i></button></div>
+        <div class="col-3"><button class="bg">=</button></div>
+     </div>
+    </div>
+    </div>
+   </div>
+    <script>
+    let btns=document.querySelectorAll('button');
+    let h=document.querySelector('h1');
+    let ans="";
+    btns.forEach(i=>{
+    i.addEventListener('click',function(){
+      
+        let value=i.textContent;
+        
+        if(value>="0"&& value<="9"|| value=="."){
+            ans+=value;
+        }
+        else if(value=="X"){
+         ans+="*";
+        }
+        else if(value=="+"){
+         ans+=value;
+        }
+        else if(value=="-"){
+         ans+=value;
+        }
+        else if(value=="+/-"){
+            if(ans>0){
+                ans=-ans;
+            }
+           else if(ans<0){
+            ans=-ans;
+           }
+        }
+        else if(value==""){
+            ans=ans.slice(0,-1)
+        }
+        else if(value=="AC"){
+            ans="";
+        }
+        else if(value=="%"){
+            ans=ans+"%";
+        }
+        else if(value=="/"){
+            ans+="/";
+        }
+        if(value=="="){
+           ans= eval(ans);
+        console.log(eval(ans));
+        
+        }
+        h.innerHTML = ans;
+    })  
+    })
+    </script>
+</body>
+</html>
